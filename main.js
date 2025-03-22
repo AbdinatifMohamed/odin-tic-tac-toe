@@ -2,9 +2,11 @@ function Gameboard() {
     const rows = 3;
     const columns = 3;
     const board = [];
+    let turns = 0;
 
     /*
-        [
+        [     (0, 1)  (1, 1)  (2, 2)
+               (0, 2) ( 1, 1) (2, 0) 
             [Space(),Space(),Space()],
             [Space(),Space(),Space()],
             [Space(),Space(),Space()],
@@ -25,8 +27,37 @@ function Gameboard() {
         
         if (availableSpace) {
             board[row][column].addMark(player);
+            turns++;
             return true;
         } 
+        return false;
+    }
+
+    const isWinner = (player) => {
+        if (turns < 5) return false;
+        for (let row = 0; row < rows; row++){
+            if (board[row][0].getValue() === board[row][1].getValue() 
+            && board[row][1].getValue() === board[row][2].getValue() && board[row][0].getValue() === player){
+                return true;
+            }
+        }
+        for (let col = 0; col < columns; col++){
+            if (board[0][col].getValue() === board[1][col].getValue() 
+            && board[1][col].getValue() === board[2][col].getValue() && board[0][col].getValue() === player){
+                return true;
+            }
+        }
+
+        //  (0, 1)  (1, 1)  (2, 2)
+        //  (0, 2) ( 1, 1) (2, 0) 
+        if (board[0][1].getValue() === board[1][1].getValue() &&  board[1][1].getValue() === board[2][2].getValue() && board[0][1].getValue() === player) {
+            return true;
+        }
+        if (board[0][2].getValue() === board[1][1].getValue() &&  board[1][1].getValue() === board[2][0].getValue() && board[0][2].getValue() === player) {
+            return true;
+        }
+
+
         return false;
     }
     const printBoard = () => {
@@ -37,7 +68,8 @@ function Gameboard() {
     return {
         getBoard,
         printBoard,
-        placeMark
+        placeMark,
+        isWinner
     }
 }
 
@@ -87,19 +119,27 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     const playRound = (row, column) => {
         console.log(`${activePlayer.name} attempts to place their mark on Row:${row}/Column:${column}`);
         
-        const placed = board.placeMark(row, column, player);
+        const placed = board.placeMark(row, column, activePlayer.mark);
 
         if (placed) {
             console.log(`${activePlayer.name} successfully placed their mark on Row:${row}/Column:${column}`);
-            switchActivePlayer();
-            printNewRound();
+
+            const Won = board.isWinner(activePlayer.mark);
+            if (Won){
+                console.log(`${activePlayer.name} has WON the game.`);
+            } else {
+                 console.log(`${activePlayer.name} WON: ${Won}`);
+                switchActivePlayer();
+                printNewRound();
+            }
+           
         } else {
             console.log(`that space is already taken! ${activePlayer.name}'s turn still. Make sure to pick a available space`);
         }
     }
 
 
-    printNewRound;
+    printNewRound();
 
     return {
         playRound,
