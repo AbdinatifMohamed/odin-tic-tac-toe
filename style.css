@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Knewave";
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.player h2 {
+    text-align: center;
+}
+.mark {
+    background-color: #0D0D0C;
+    height: 6rem;
+    width: 6rem;
+    color: #fff;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mark p {
+    display: inline;
+    font-size: 3rem;
+}
+
+#playeronename, #playertwoname {
+    background-color: #0D0D0C;
+    color: #fff;
+    padding: .2rem;
+    border: none;
+}
+
+.screenboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.spaces {
+    display: flex;
+    flex-direction: column;
+    height: 19.75rem;
+    width: 19.75rem;
+    gap: .5rem;
+}
+
+.row {
+    display: flex;
+    gap: .5rem;
+    flex: 1;
+}
+
+.col {
+   
+    background-color: #0D0D0C;
+    height: 6.25rem;
+    width: 6.25rem;
+    font-size: 3rem;
+    border: none; 
+    border-radius: .5rem;
+    color: #fff;
+}
+
+.status {
+    text-align: center;
+}

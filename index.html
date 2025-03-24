@@ -4,10 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Tic Tac Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <main>
+        <div class="player">
+            <div class="mark">
+                <p>X</p>
+            </div>
+            <h2>Player One Name:</h2>
+            <input type="text" name="playeronename" id="playeronename" placeholder="Enter a name..">
+        </div>
+        <div class="screenboard">
+            <h1>TIC TAC TOE</h1>
+            <div class="spaces">
+                <div class="row" data-row="0" id="row-0">
+                    <button class="col" data-col="0" id="col-0"></button>
+                    <button class="col" data-col="1" id="col-1"></button>
+                    <button class="col" data-col="2" id="col-2"></button>
+                </div>
+                <div class="row" data-row="1" id="row-1">
+                    <button class="col" data-col="0" id="col-0"></button>
+                    <button class="col" data-col="1" id="col-1"></button>
+                    <button class="col" data-col="2" id="col-2"></button>
+                </div>
+                <div class="row" data-row="2" id="row-2">
+                    <button class="col" data-col="0" id="col-0"></button>
+                    <button class="col" data-col="1" id="col-1"></button>
+                    <button class="col" data-col="2" id="col-2"></button>
+                </div>
+            </div>
+            <p class="status">
+                Game hasn't started until a player one selects a space. Make sure to enter names.
+            </p>
+        </div>
+        <div class="player">
+            <div class="mark">
+                <p>O</p>
+            </div>
+            <h2>Player Two Name:</h2>
+            <input type="text" name="playertwoname" id="playertwoname" placeholder="Enter a name..">
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
